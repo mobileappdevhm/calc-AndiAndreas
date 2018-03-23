@@ -1,0 +1,71 @@
+import 'package:calculator2/logic/mathParser.dart';
+import 'package:flutter/material.dart';
+
+
+class CalcDisplay extends StatefulWidget {
+
+  @override
+  State createState() {
+    return new CalcDisplayState();
+  }
+}
+
+class CalcDisplayState extends State<CalcDisplay> {
+  String displayContent = "0";
+  bool isResult = true;
+
+  CalcDisplayState();
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      decoration: new BoxDecoration(color: Colors.white),
+      constraints: new BoxConstraints(),
+      padding: const EdgeInsets.all(40.0),
+      alignment: Alignment.centerRight,
+      child: new Text(
+        '$displayContent',
+        style: new TextStyle(
+          fontWeight: FontWeight.w800,
+          fontFamily: 'Roboto',
+          letterSpacing: 0.5,
+          fontSize: 18.0,
+          height: 2.0,
+        ),
+      ),
+    );
+  }
+
+  void addToInput(String input) {
+    setState(() {
+      print(input);
+      var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+      var operators = ['+', '-', '*', '/'];
+
+      if (numbers.contains(input)) { //Special case!
+        if (isResult)
+          displayContent = input;
+        else
+          displayContent = displayContent + input;
+        isResult = false;
+      } else if (operators.contains(input)) {
+        isResult = false;
+        displayContent = displayContent + ' ' + input + ' ';
+      } else {
+        if (input == "CE") {
+          isResult = true;
+          displayContent = "0";
+        } else if (input == "=") {
+          displayContent = MathParser.calculateResult(displayContent);
+          this.isResult=true;
+        } else if (input == "<=") {
+          displayContent = displayContent.substring(0, displayContent.length - 1);
+          if (displayContent.isEmpty) {
+            displayContent = "0";
+            this.isResult=true;
+          }
+        }
+      }
+    });
+  }
+}

@@ -1,0 +1,34 @@
+import 'package:calculator2/widgets/calcDisplay.dart';
+import 'package:calculator2/widgets/calcKeyPad.dart';
+import 'package:flutter/material.dart';
+
+class Calc extends StatefulWidget {
+
+  @override
+  State createState() {
+    return new CalculatorState();
+  }
+}
+
+class CalculatorState extends State<Calc> {
+
+  final CalcDisplay calcDisplay = new CalcDisplay();
+  final CalcDisplayState calcDisplayState = new CalcDisplay().createState();
+
+  final CalcKeyPad calcKeyPad = new CalcKeyPad(calcDisplayState);
+  final CalcKeyPadState calcKeyPadState = new CalcKeyPad(calcDisplayState).createState();
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      decoration: new BoxDecoration(color: Colors.black87),
+      child: new Column(
+        children: <Widget>[
+          calcDisplayState.build(context),
+          calcKeyPadState.build(context),
+
+        ], // Children of outer Row
+      ), // Outer Row
+    );
+  }
+}
