@@ -9,10 +9,10 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    implements CalcDisplayViewContract {
+class _HomePageState extends State<HomePage> implements CalcDisplayViewContract {
+
   CalcDisplayViewPresenter _presenter;
-  DisplayContent _displayContent;
+  String _displayContent;
 
   _HomePageState() {
     // This is the view the presenter should use
@@ -28,44 +28,46 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    double _barHeihgt = 80.0;
+    double _calcDisplayHeight = _barHeihgt;
+
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Calculator"),
-        ), // AppBar
-        body: new Example01(),
-
-        /*new Container(
-          decoration: new BoxDecoration(color: Colors.black87),
-          child: new Column(
-            children: <Widget>[
-
-              //Display column
-              new Container(
-                height: 90.0,
-                decoration: new BoxDecoration(color: Colors.white),
-                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 15.0),
-                alignment: Alignment.centerRight,
-                child: new Text(
-                  '00000',
-                  style: textStyle,
-                ),
+      appBar: new AppBar(
+        title: new Text("Calculator"),
+      ), // AppBar
+      body: new Container(
+        decoration: new BoxDecoration(color: Colors.black87),
+        child: new Column(
+          children: <Widget>[
+            //Display column
+            new Container(
+              height: _calcDisplayHeight,
+              decoration: new BoxDecoration(color: Colors.white),
+              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+              alignment: Alignment.centerRight,
+              child: new Text(
+                '$_displayContent',
+                style: _textStyle,
               ),
-              //KeyPad column
-
-
-            ], // Children of outer Row
-          ), // Outer Row
-        ),*/
+            ),
+            //KeyPad column
+            new KeyPad(_presenter),
+          ], // Children of outer Row
+        ), // Outer Row
+      ),
     ); // Scaffold
   }
 
+  
+
   @override
-  void onSetCalcDisplay(DisplayContent data) {
-    // TODO: implement onSetCalcDisplay
+  void onSetCalcDisplay(DisplayContent content) {
+    setState(() => _displayContent = content.displayText);
+    print(_displayContent);
   }
 }
 
-TextStyle textStyle = new TextStyle(
+TextStyle _textStyle = new TextStyle(
   fontWeight: FontWeight.w800,
   fontFamily: 'Roboto',
   letterSpacing: 0.5,

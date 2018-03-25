@@ -13,11 +13,11 @@ class ProdCalcData implements CalcData {
 
   @override
   DisplayContent fetchCalcText() {
-    return new DisplayContent("0.0");
+    return new DisplayContent(displayText);
   }
 
   @override
   void setDisplayText(String text) {
-    // TODO: implement setCalcText
+    displayText = text;
   }
 }
