@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> implements CalcDisplayViewContract 
   void initState() {
     super.initState();
     // Set the initial state for the display
-    _presenter.setDisplayData("0.0");
+    _presenter.proceedInput('CE');
   }
 
   @override
@@ -57,8 +57,6 @@ class _HomePageState extends State<HomePage> implements CalcDisplayViewContract 
       ),
     ); // Scaffold
   }
-
-  
 
   @override
   void onSetCalcDisplay(DisplayContent content) {

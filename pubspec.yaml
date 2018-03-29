@@ -3,7 +3,8 @@ description: A new Flutter application.
 
 dependencies:
   flutter_staggered_grid_view:
-  petitparser: "^1.7.6"
+  #petitparser: "^1.7.6"
+  math_expressions: "^0.3.0"
   flutter:
     sdk: flutter
 

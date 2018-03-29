@@ -69,7 +69,7 @@ class KeyPad extends StatelessWidget {
       new _keyPadTile("CE", _presenter),
       new _keyPadTile("C", _presenter),
       new _keyPadTile("\u232B", _presenter),
-      new _keyPadTile("\u00F7", _presenter),
+      new _keyPadTile("/", _presenter),
       //2. Row of tiles 7, 8, 9, *
       new _keyPadTile("7", _presenter),
       new _keyPadTile("8", _presenter),

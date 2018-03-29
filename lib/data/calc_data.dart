@@ -1,13 +1,14 @@
 class DisplayContent {
   String displayText;
+  bool isResult;
 
-  DisplayContent(this.displayText);
+  DisplayContent(this.displayText, this.isResult);
 }
 
 abstract class CalcData {
-  DisplayContent fetchCalcResult();
-  DisplayContent fetchCalcText();
+  DisplayContent fetchCalcData();
   void setDisplayText(String text);
+  void setIsResult(bool isResult);
 }
 
 class CalcResultException implements Exception {

@@ -1,5 +1,5 @@
 import 'package:calculator2/data/calc_data.dart';
-import 'package:calculator2/data/calc_data_mock.dart';
+//import 'package:calculator2/data/calc_data_mock';
 import 'package:calculator2/data/calc_data_prod.dart';
 
 enum Flavor {
@@ -24,8 +24,8 @@ class Injector {
 
   CalcData get calcDisplayData {
     switch (_flavor) {
-      case Flavor.MOCK:
-        return new MockCalcData();
+      //case Flavor.MOCK:
+      //  return new MockCalcData();
       default:
         return new ProdCalcData();
     }
