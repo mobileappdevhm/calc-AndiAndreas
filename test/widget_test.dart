@@ -207,4 +207,104 @@ void main() {
     await tester.pump();
     expect(_getTextOfDisplay(), "7");
   });
+
+  testWidgets('Test floating point operation mult', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button1);
+    await tester.tap(buttonPoint);
+    await tester.tap(button9);
+    await tester.tap(buttonMult);
+    await tester.tap(button3);
+    await tester.tap(buttonPoint);
+    await tester.tap(button2);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "6.08");
+  });
+
+  testWidgets('Test floating point operation div', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button1);
+    await tester.tap(buttonPoint);
+    await tester.tap(button0);
+    await tester.tap(buttonDiv);
+    await tester.tap(button2);
+    await tester.tap(buttonPoint);
+    await tester.tap(button0);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "0.5");
+  });
+
+  testWidgets('Simplify float to int result', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button0);
+    await tester.tap(buttonPoint);
+    await tester.tap(button5);
+    await tester.tap(buttonAdd);
+    await tester.tap(button1);
+    await tester.tap(buttonPoint);
+    await tester.tap(button5);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "2");
+  });
+
+  testWidgets('Division by zero', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button0);
+    await tester.tap(buttonPoint);
+    await tester.tap(button5);
+    await tester.tap(buttonDiv);
+    await tester.tap(button0);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "ERROR");
+  });
+
+  testWidgets('Incomplete term', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button0);
+    await tester.tap(buttonPoint);
+    await tester.tap(button5);
+    await tester.tap(buttonDiv);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "ERROR");
+  });
+
+  testWidgets('Reuse result', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button5);
+    await tester.tap(buttonSub);
+    await tester.tap(button1);
+    await tester.tap(buttonResult);
+    await tester.tap(buttonSub);
+    await tester.tap(button1);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "3");
+  });
+
+  testWidgets('Replace result', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(button5);
+    await tester.tap(buttonResult);
+    await tester.tap(button1);
+    await tester.tap(buttonAdd);
+    await tester.tap(button2);
+    await tester.tap(buttonResult);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "3");
+  });
+
+  testWidgets('Del multiple times no input', (WidgetTester tester) async {
+    await tester.pumpWidget(new MyApp());
+    await tester.tap(buttonDel);
+    await tester.tap(buttonDel);
+    await tester.tap(buttonDel);
+    await tester.tap(buttonDel);
+    await tester.pump();
+    expect(_getTextOfDisplay(), "0");
+  });
 }
