@@ -103,6 +103,7 @@ class _keyPadTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new InkWell(
+      key: new Key("InkWell" + _theText),
       onTap: () {_presenter.proceedInput(_theText);},
       child: new Center(
         child: new Padding(

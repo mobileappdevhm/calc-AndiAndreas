@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> implements CalcDisplayViewContract 
               alignment: Alignment.centerRight,
               child: new Text(
                 '$_displayContent',
+                key: new Key("resultDisplayText"),
                 style: _textStyle,
               ),
             ),
@@ -61,7 +62,6 @@ class _HomePageState extends State<HomePage> implements CalcDisplayViewContract 
   @override
   void onSetCalcDisplay(DisplayContent content) {
     setState(() => _displayContent = content.displayText);
-    print(_displayContent);
   }
 }
 
