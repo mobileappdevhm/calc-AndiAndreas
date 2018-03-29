@@ -14,7 +14,8 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(new MyApp());
 
-    expect(find.text('0'), findsOneWidget);
+    // Result and keyPad
+    expect(find.text('0'), findsNWidgets(2));
     expect(find.text('1'), findsOneWidget);
     expect(find.text('2'), findsOneWidget);
     expect(find.text('3'), findsOneWidget);
@@ -26,7 +27,7 @@ void main() {
     expect(find.text('9'), findsOneWidget);
     expect(find.text('+'), findsOneWidget);
     expect(find.text('-'), findsOneWidget);
-    expect(find.text('\u00F7'), findsOneWidget);
+    expect(find.text('/'), findsOneWidget);
     expect(find.text('\u232B'), findsOneWidget);
     expect(find.text('C'), findsOneWidget);
     expect(find.text('CE'), findsOneWidget);
