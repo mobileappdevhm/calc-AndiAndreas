@@ -10,14 +10,3 @@ abstract class CalcData {
   void setDisplayText(String text);
   void setIsResult(bool isResult);
 }
-
-class CalcResultException implements Exception {
-  final _message;
-
-  CalcResultException([this._message]);
-
-  String toString() {
-    if (_message == null) return "Exception";
-    return "Exception: $_message";
-  }
-}

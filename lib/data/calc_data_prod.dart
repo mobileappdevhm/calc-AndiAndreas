@@ -1,7 +1,7 @@
 import 'package:calculator2/data/calc_data.dart';
 
 class ProdCalcData implements CalcData {
-  String _displayText = "0.0";
+  String _displayText = "0";
   bool _isResult = true;
 
   ProdCalcData();

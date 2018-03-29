@@ -37,15 +37,13 @@ class KeyPad extends StatelessWidget {
     final bool _isLandscape = _orientation == Orientation.landscape;
 
     double _mainAxisSpacing = 0.0;
-    //if (!_isLandscape) {
-    //  _mainAxisSpacing = (_heihgt - _width) / 5.0;
-    //}
 
     int _crossAxisCount = 8;
     if (!_isLandscape) {
       _crossAxisCount = 4;
     }
 
+    // Build the Key Pad
     return new Expanded(
       child: new Container(
         child: new Padding(

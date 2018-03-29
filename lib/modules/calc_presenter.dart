@@ -7,11 +7,8 @@ abstract class CalcDisplayViewContract {
 }
 
 class CalcDisplayViewPresenter {
-  final List<String> _numbers = [
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+  final List<String> _numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
   final List<String> _operators = ['+', '-', '*', '/'];
-
-  //final List<String> _specials = ['CE'];
 
   CalcDisplayViewContract _view;
   CalcData _displayData;
@@ -57,10 +54,10 @@ class CalcDisplayViewPresenter {
 
   String _proceedDel(DisplayContent currentData) {
     final String currentText = currentData.displayText;
-    String result = currentText.substring(0, currentText.length-1);
+    String result = currentText.substring(0, currentText.length - 1);
     // Remove all spaces left
-    while (result != "" && result.substring(result.length-1) == " ") {
-      result = result.substring(0, result.length-1);
+    while (result != "" && result.substring(result.length - 1) == " ") {
+      result = result.substring(0, result.length - 1);
     }
     // Reset if new display text is empty
     if (result == "")
@@ -99,7 +96,7 @@ class CalcDisplayViewPresenter {
     // Replace result
     if (currentData.isResult)
       result = input;
-    // Add a scpace if last input was an operator
+    // Add a space if last input was an operator
     else if (_lastCharIsOperator(currentData.displayText))
       result = currentData.displayText + ' ' + input;
     else
@@ -110,14 +107,14 @@ class CalcDisplayViewPresenter {
   }
 
   bool _lastCharIsOperator(String string) {
-    if (_operators.contains(string.substring(string.length-1)))
+    if (_operators.contains(string.substring(string.length - 1)))
       return true;
     else
       return false;
   }
 
   bool _lastCharIsNumber(String string) {
-    if (_numbers.contains(string.substring(string.length-1)))
+    if (_numbers.contains(string.substring(string.length - 1)))
       return true;
     else
       return false;
